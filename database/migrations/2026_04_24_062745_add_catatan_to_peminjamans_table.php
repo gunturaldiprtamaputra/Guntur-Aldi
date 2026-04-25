@@ -7,11 +7,13 @@ use Illuminate\Support\Facades\Schema;
 return new class extends Migration
 {
     public function up(): void
-    {
+{
+    if (!Schema::hasColumn('peminjamans', 'catatan')) {
         Schema::table('peminjamans', function (Blueprint $table) {
-            $table->text('catatan')->nullable(); // ← HARUS di dalam sini
+            $table->text('catatan')->nullable();
         });
     }
+}
 
     public function down(): void
     {
